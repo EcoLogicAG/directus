@@ -72,8 +72,8 @@ define(function (require, exports, module) {
     },
 
     startMessagesPolling: function () {
-      this.pollingMessages = true;
-      this.checkMessages();
+      this.pollingMessages = false;
+      // this.checkMessages();
     },
 
     checkMessages: function () {
@@ -83,16 +83,16 @@ define(function (require, exports, module) {
 
       var updateFrequency = 10000; // 10 seconds
 
-      this.fetchMessages();
+      // this.fetchMessages();
 
-      window.setTimeout(this.checkMessages.bind(this), updateFrequency);
+      // window.setTimeout(this.checkMessages.bind(this), updateFrequency);
     },
 
     stopMessagesPolling: function () {
       var waitToRestart = 30000; // 30 seconds
 
       this.pollingMessages = false;
-      window.setTimeout(this.startMessagesPolling.bind(this), waitToRestart);
+      // window.setTimeout(this.startMessagesPolling.bind(this), waitToRestart);
     },
 
     fetchMessages: function () {
