@@ -622,10 +622,6 @@ define(function (require, exports, module) {
       var user = app.user;
       var userGroup = user.get('group');
 
-      if (!(parseInt(id,10) === user.id || userGroup.id === 1)) {
-        return this.notFound();
-      }
-
       var model;
       var isNew = id === 'new';
       this.setTitle(app.settings.get('global').get('project_name') + ' | Users');
@@ -659,7 +655,13 @@ define(function (require, exports, module) {
       if (isNew) {
         displayView();
       } else {
-        model.fetch({success: displayView});
+        model.fetch({success: function (model, resp) {
+          if (_.isEmpty(resp.data)) {
+            return self.notFound();
+          }
+
+          displayView();
+        }});
       }
     },
 
