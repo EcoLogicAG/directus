@@ -126,7 +126,7 @@ define([
       }
 
       var options = {
-        plugins: 'table hr lists link image print pagebreak code insertdatetime media autoresize paste preview',
+        plugins: 'table hr lists link image print pagebreak code insertdatetime media autoresize paste preview tinyimages',
         selector: '#wysiwyg_' + this.options.name,
         branding: false,
         skin: 'directus',
